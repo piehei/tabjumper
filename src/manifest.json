@@ -1,25 +1,25 @@
 {
   "manifest_version": 2,
-  "name": "TabJump",
-  "description": "Hyppy",
-  "version": "0.0.0.1",
+  "name": "TabJump || search and jump tabs quickly",
+  "description": "Search your tabs from all your windows and jump to them quickly. Activate quickly by keyboard shortcuts.",
+  "version": "0.0.0.5",
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_popup": "tabJump.html"
   },
   "permissions": [
     "activeTab",
     "tabs",
     "storage",
     "windows",
-    "background"
+    "background",
+    "history"
   ],
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["cs.js"],
-      "css": ["css.css"]
+      "matches": ["<all_urls>"],
+      "js": ["cs.js"]
     }
   ],
   "background": {
@@ -27,5 +27,21 @@
   },
   "web_accessible_resources": [
     "css.css"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "commands": {
+    "toggle": {
+      "suggested_key": {
+        "default": "Ctrl+Period",
+        "mac": "Command+Period"
+      },
+      "description": "Toggle"
+    },
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Comma",
+        "mac": "Command+Comma"
+      }
+    }
+  }
 }
