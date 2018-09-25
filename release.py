@@ -11,16 +11,17 @@ print(files)
 
 
 manifest = [x for x in files if "manifest" in x][0]
+files = [ x for x in files if "manifest" not in x]
 
 mjson = {}
 with open(manifest, "r") as m:
     mjson = json.load(m)
 
 print(mjson)
-
 mjson["background"]["scripts"] = [x for x in mjson["background"]["scripts"] if x not in SKIP_LIST]
-
 print(mjson)
+
+
 
 name = f"releases/tabJump-{mjson['version']}.zip"
 
@@ -29,4 +30,5 @@ zipf = zipfile.ZipFile(name, 'w')
 for f in files:
     zipf.write(f)
 
+zipf.writestr("src/manifest.json", json.dumps(mjson))
 zipf.close()
