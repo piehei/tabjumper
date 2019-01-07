@@ -7,8 +7,11 @@ SKIP_LIST = [ "hot-reload.js" ]
 files = os.listdir('src')
 files = [ x for x in files if x not in SKIP_LIST ]
 files = [ f"src/{x}" for x in files ]
-print(files)
+sub_dirs = [ x for x in files if os.path.isdir(x) ]
 
+# TODO: convert to some recursive form
+#       currently this understands only one sub dir
+files += [ f"{x}/{f}" for x in sub_dirs for f in os.listdir(x) ]
 
 manifest = [x for x in files if "manifest" in x][0]
 files = [ x for x in files if "manifest" not in x]
