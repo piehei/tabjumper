@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "TabJump || search and jump tabs quickly",
   "description": "Search your tabs from all your windows and jump to them quickly. Activate quickly by keyboard shortcuts.",
-  "version": "0.0.0.7",
+  "version": "0.0.0.8",
 
   "browser_action": {
     "default_icon": "icon.png",
