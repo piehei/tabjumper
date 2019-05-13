@@ -30,13 +30,14 @@
         "default": "Ctrl+Period",
         "mac": "Command+Period"
       },
-      "description": "Toggle"
+      "description": "Open standalone page"
     },
     "_execute_browser_action": {
       "suggested_key": {
         "default": "Ctrl+Comma",
         "mac": "Command+Comma"
-      }
+      },
+      "description": "Open popup"
     },
     "prev-tab": {
       "suggested_key": {
