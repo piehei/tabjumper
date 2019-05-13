@@ -9,6 +9,9 @@ export default {
       tabNum: 0,
       windowNum: 0,
       sIndex: 0,
+      showHistory: false,
+      tabHistory: [],
+      detailedHistory: [],
     }
   },
   watch: {
@@ -22,6 +25,14 @@ export default {
   },
   mounted() {
     console.log('mounted App.vue');
+    chrome.storage.local.get(['tabHistory'], (result) => {
+      console.log(result);
+      this.tabHistory = result.tabHistory;
+      chrome.tabs.query({}, (tabs) => {
+        this.detailedHistory = this.tabHistory.map(ht => tabs.find(t => t.id === ht.tabId)).filter(t => t);
+      });
+    });
+
 
     this.updateTabs();
 
@@ -76,7 +87,15 @@ export default {
     },
   },
   methods: {
-
+    travelHistory(indx) {
+      // const travelTo = this.tabHistory.length - indx;
+    },
+    removeFromHistory(indx) {
+      chrome.runtime.sendMessage({
+        type: 'removeIndxFromHistory',
+        indx: this.detailedHistory.length - 1 - indx,
+      });
+    },
     unique(arr) {
       return arr.filter((value, index, array) => array.indexOf(value) === index)
     },

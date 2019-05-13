@@ -11,13 +11,27 @@
       }
     </style>
   </head>
-  <body
-    >
+  <body>
     <div id="app">
       <div class="container">
         <div class="row">
           <div class="col-md-12 mt-4">
             <h1>TabJump {{ tabNum }}/{{ windowNum }}</h1>
+
+            <button @click="showHistory = !showHistory" class="mr-3 mt-2 btn btn-success" style="position: absolute; right: 0; top: 0;">
+              History ({{ detailedHistory.length }})
+            </button>
+
+            <ul v-if="showHistory">
+              <li v-for="(t, i) in detailedHistory.slice().reverse()"
+                  @click="travelHistory(i)"
+                  class="d-flex list-group-item">
+                  {{ t.url }}
+                  <button @click="removeFromHistory(i)" class="ml-auto">
+                    &times;
+                  </button>
+              </li>
+            </ul>
 
             <form @submit.prevent>
               <input ref="input"

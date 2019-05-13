@@ -23,7 +23,8 @@
     }
   ],
   "background": {
-    "scripts": [ "back.js", "hot-reload.js" ]
+    "scripts": [ "back.js", "hot-reload.js" ],
+    "persistent": false
   },
   "web_accessible_resources": [
     "css.css"
@@ -42,6 +43,20 @@
         "default": "Ctrl+Comma",
         "mac": "Command+Comma"
       }
+    },
+    "prev-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Comma"
+      },
+      "description": "Travel tab history backwards",
+      "global": true
+    },
+    "next-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Period"
+      },
+      "description": "Travel tab history forwards",
+      "global": true
     }
   }
 }
