@@ -16,14 +16,8 @@
     "background",
     "history"
   ],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["cs.js"]
-    }
-  ],
   "background": {
-    "scripts": [ "back.js", "hot-reload.js" ],
+    "scripts": [ "backgroundScript.js", "hot-reload.js" ],
     "persistent": false
   },
   "web_accessible_resources": [
